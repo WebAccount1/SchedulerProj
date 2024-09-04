@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Simple Calendar</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to My Website!</h1>
-    <p>This is a simple GitHub Pages site.</p>
+    <div class="calendar">
+        <div class="header">
+            <span id="prev">&#10094;</span>
+            <h2 id="monthYear"></h2>
+            <span id="next">&#10095;</span>
+        </div>
+        <div class="weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+        </div>
+        <div class="days" id="days"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
