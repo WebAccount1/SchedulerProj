@@ -1,41 +1,82 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const monthYear = document.getElementById('monthYear');
-    const daysContainer = document.getElementById('days');
-    const prevButton = document.getElementById('prev');
-    const nextButton = document.getElementById('next');
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
 
-    let date = new Date();
+.calendar {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 300px;
+    background-color: white;
+}
 
-    function renderCalendar() {
-        const year = date.getFullYear();
-        const month = date.getMonth();
-        const firstDay = new Date(year, month, 1).getDay();
-        const lastDay = new Date(year, month + 1, 0).getDate();
-        
-        monthYear.textContent = `${date.toLocaleString('default', { month: 'long' })} ${year}`;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3f51b5;
+    color: white;
+    padding: 10px;
+}
 
-        daysContainer.innerHTML = '';
+.header h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
 
-        // Empty cells for days of the week before the 1st
-        for (let i = 0; i < firstDay; i++) {
-            daysContainer.innerHTML += '<div></div>';
-        }
+button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
 
-        // Days of the month
-        for (let day = 1; day <= lastDay; day++) {
-            daysContainer.innerHTML += `<div>${day}</div>`;
-        }
+button:hover {
+    opacity: 0.8;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #f7f7f7;
+    font-weight: bold;
+}
+
+.weekdays div {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.days div {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.days div:nth-child(7n) {
+    border-right: none;
+}
+
+.days div:hover {
+    background-color: #f0f0f0;
+}
+
+@media (max-width: 600px) {
+    .calendar {
+        width: 100%;
     }
-
-    prevButton.addEventListener('click', () => {
-        date.setMonth(date.getMonth() - 1);
-        renderCalendar();
-    });
-
-    nextButton.addEventListener('click', () => {
-        date.setMonth(date.getMonth() + 1);
-        renderCalendar();
-    });
-
-    renderCalendar();
-});
+}
