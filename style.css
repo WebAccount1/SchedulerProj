@@ -30,7 +30,7 @@ body {
     margin: 0;
     font-size: 1.2em;
     text-align: center;
-    flex: 1;
+    flex-grow: 1; /* Ensures the h2 element grows to fill the space */
 }
 
 button {
